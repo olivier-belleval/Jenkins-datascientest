@@ -117,4 +117,10 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'Job is finished'
+            email to: "belleval.olivier+jenkins@gmail.com", subject: "Jenkins Job ${env.JOB_NAME} Build # ${env.BUILD_ID} has finshed", body: "Jenkins Job ${currentBuild.fullDisplayName} ${currentBuild.currentResult} url : ${env.BUILD_URL}"
+        }
+    }
 }
